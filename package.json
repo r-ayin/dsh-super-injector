@@ -1,0 +1,72 @@
+{
+  "name": "dsh-super-injector",
+  "version": "0.3.3",
+  "description": "Runtime plugin injector: inject, hot-reload and uninstall local plugin packages in a running dsh without restarts, with plugin scaffolding, self-test and a management panel.",
+  "private": true,
+  "type": "module",
+  "main": "./lib/index.js",
+  "types": "./lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "scripts/build.sh",
+    "scripts/fix-patch.mjs",
+    "scripts/prepare.mjs"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-slots"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": ">=0.0.1-rc <2",
+    "cordis": ">=4.0.0-rc <5",
+    "schemastery": "^3.18.0"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis-plugin-loader": "^1.0.2",
+    "@types/node": "^24.13.3",
+    "tsdown": "^0.22.14",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "prepare": "node scripts/prepare.mjs",
+    "build:client": "tsdown",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "author": "r-ayin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r-ayin/dsh-super-injector.git"
+  },
+  "homepage": "https://github.com/r-ayin/dsh-super-injector#readme",
+  "bugs": {
+    "url": "https://github.com/r-ayin/dsh-super-injector/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}
