@@ -1,6 +1,6 @@
 {
   "name": "dsh-super-injector",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Runtime plugin injector: inject, hot-reload and uninstall local plugin packages in a running dsh without restarts, with plugin scaffolding, self-test and a management panel.",
   "private": true,
   "type": "module",
